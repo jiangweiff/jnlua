@@ -50,3 +50,21 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# IntelliJ IDEA files
+*.iml
+*.ipr
+*.iws
+.idea
+
+# Gradle files
+build
+out
+.gradle
+
+# For the moment ignore this so it can be used locally for secrets
+gradle.properties
+
+.classpath
+.project
+bin
