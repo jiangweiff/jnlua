@@ -4,13 +4,14 @@
 # == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
 
 JDK_DIR=C:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot
+JNLUA_SUFFIX=52
 
 # Your platform. See PLATS for possible values.
 PLAT= none
 
 CC= gcc
-CFLAGS= -O2 -Wall -DLUA_COMPAT_ALL -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" $(SYSCFLAGS) $(MYCFLAGS)
-LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
+CFLAGS= -O2 -Wall -DLUA_COMPAT_ALL -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" -DJNLUA_SUFFIX=$(JNLUA_SUFFIX) $(SYSCFLAGS) $(MYCFLAGS)
+LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS) -W -shared
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
 AR= ar rcu
@@ -68,7 +69,7 @@ $(LUAC_T): $(LUAC_O) $(LUA_A)
 	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
 
 $(JNLUA_T): jnlua.o $(LUA_A)
-	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
+	$(CC) -o $@ $(LDFLAGS) jnlua.o $(LUAC_O) $(LUA_A) $(LIBS)
 
 
 clean:
