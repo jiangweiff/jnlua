@@ -212,7 +212,7 @@ public class LuaStateTest extends AbstractLuaTest {
 	 */
 	@Test
 	public void testOpenLibs() throws Exception {
-		LuaState newLuaState = new LuaState53();
+		LuaState newLuaState = new LuaState52();
 		newLuaState.getGlobal("table");
 		assertEquals(LuaType.NIL, newLuaState.type(-1));
 		newLuaState.pop(1);

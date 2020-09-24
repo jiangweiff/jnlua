@@ -2672,6 +2672,8 @@ public abstract class LuaState {
 		 * The UTF-8 library, available in Lua 5.3+.
 		 */
 		UTF8(10),
+		
+		CJSON(11),
 
 		/**
 		 * The Eris persistence library, available if the "JNLUA_USE_ERIS"

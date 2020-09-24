@@ -36,7 +36,7 @@ CORE_O=	lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o \
 	lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o \
 	ltm.o lundump.o lvm.o lzio.o
 LIB_O=	lauxlib.o lbaselib.o lbitlib.o lcorolib.o ldblib.o liolib.o \
-	lmathlib.o loslib.o lstrlib.o ltablib.o loadlib.o linit.o
+	lmathlib.o loslib.o lstrlib.o ltablib.o loadlib.o linit.o 
 BASE_O= $(CORE_O) $(LIB_O) $(MYOBJS)
 
 LUA_T=	lua
@@ -68,8 +68,8 @@ $(LUA_T): $(LUA_O) $(LUA_A)
 $(LUAC_T): $(LUAC_O) $(LUA_A)
 	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
 
-$(JNLUA_T): jnlua.o $(LUA_A)
-	$(CC) -o $@ $(LDFLAGS) jnlua.o $(LUAC_O) $(LUA_A) $(LIBS)
+$(JNLUA_T): jnlua.o $(LUA_A)  lua_cjson.o strbuf.o fpconv.o
+	$(CC) -o $@ $(LDFLAGS) jnlua.o  lua_cjson.o strbuf.o fpconv.o $(LUAC_O) $(LUA_A) $(LIBS)
 
 
 clean:
@@ -192,4 +192,7 @@ lvm.o: lvm.c lua.h luaconf.h ldebug.h lstate.h lobject.h llimits.h ltm.h \
  lzio.h lmem.h ldo.h lfunc.h lgc.h lopcodes.h lstring.h ltable.h lvm.h
 lzio.o: lzio.c lua.h luaconf.h llimits.h lmem.h lstate.h lobject.h ltm.h \
  lzio.h
+lua_cjson.o: lua_cjson.c lua.h
+strbuf.o: strbuf.c
+fpconv.o: fpconv.c
 jnlua.o: jnlua.c lua.h lauxlib.h lualib.h

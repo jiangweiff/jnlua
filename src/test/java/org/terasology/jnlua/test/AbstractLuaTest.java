@@ -28,6 +28,7 @@ import org.junit.After;
 import org.junit.Before;
 
 import org.terasology.jnlua.LuaState;
+import org.terasology.jnlua.LuaState52;
 import org.terasology.jnlua.LuaState53;
 
 /**
@@ -43,7 +44,7 @@ public abstract class AbstractLuaTest {
 	 */
 	@Before
 	public void setup() throws Exception {
-		luaState = new LuaState53();
+		luaState = new LuaState52();
 	}
 
 	/**
