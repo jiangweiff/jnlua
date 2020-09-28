@@ -120,7 +120,8 @@ public final class NativeSupport {
 				builder.append("i686");
 			}
 
-			System.loadLibrary("static/"+builder.toString());
+			NativeLibraryLoader.load(builder.toString(), null);
+			//System.loadLibrary("static/"+builder.toString());
 		}
 	}
 }
