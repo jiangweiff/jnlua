@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        maven {
+            url "${REPOSITORY_URL}/maven-public"
+        }
+    }
+}
+
+rootProject.name = "JNLua"

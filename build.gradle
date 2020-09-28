@@ -1,0 +1,13 @@
+plugins {
+    id "org.springframework.boot" version "2.3.0.RELEASE" apply false
+}
+
+ext {
+    version = "0.0.1-SNAPSHOT"
+}
+
+apply from: "${REPOSITORY_URL}/maven-public/config.gradle"
+apply from: "${REPOSITORY_URL}/maven-public/publish.gradle"
+
+dependencies {
+}
