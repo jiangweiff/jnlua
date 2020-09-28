@@ -4,13 +4,14 @@
 # == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
 
 JDK_DIR=C:\Program Files\AdoptOpenJDK\jdk-11.0.8.10-hotspot
+JDK_DIR_LINUX=/usr/lib/jvm/java-11-openjdk-11.0.8.10-0.el7_8.x86_64
 JNLUA_SUFFIX=52
 
 # Your platform. See PLATS for possible values.
 PLAT= none
 
 CC= gcc
-CFLAGS= -O2 -Wall -DLUA_COMPAT_ALL -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" -DJNLUA_SUFFIX=$(JNLUA_SUFFIX) $(SYSCFLAGS) $(MYCFLAGS)
+CFLAGS= -O2 -Wall -DLUA_COMPAT_ALL -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" -I"$(JDK_DIR_LINUX)/include" -DJNLUA_SUFFIX=$(JNLUA_SUFFIX) $(SYSCFLAGS) $(MYCFLAGS)
 LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS) -W -shared
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
@@ -111,6 +112,7 @@ generic: $(ALL)
 
 linux:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
+	$(MAKE) "JNLUA_T=libjnlua-5.2-linux-amd64.dll" libjnlua-5.2-linux-amd64.dll
 
 macosx:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX" SYSLIBS="-lreadline" CC=cc
