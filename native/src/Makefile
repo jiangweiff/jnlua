@@ -11,7 +11,7 @@ JNLUA_SUFFIX=52
 PLAT= none
 
 CC= gcc
-CFLAGS= -O2 -Wall -DLUA_COMPAT_ALL -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" -I"$(JDK_DIR_LINUX)/include" -DJNLUA_SUFFIX=$(JNLUA_SUFFIX) $(SYSCFLAGS) $(MYCFLAGS)
+CFLAGS= -O2 -Wall -fPIC -DLUA_COMPAT_ALL -DLUA_USE_POSIX -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" -I"$(JDK_DIR_LINUX)/include" -I"$(JDK_DIR_LINUX)/include/linux" -DJNLUA_SUFFIX=$(JNLUA_SUFFIX) $(SYSCFLAGS) $(MYCFLAGS)
 LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS) -W -shared
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
@@ -112,7 +112,7 @@ generic: $(ALL)
 
 linux:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
-	$(MAKE) "JNLUA_T=libjnlua-5.2-linux-amd64.dll" libjnlua-5.2-linux-amd64.dll
+	$(MAKE) "JNLUA_T=jnlua-5.2-linux-amd64.so" jnlua-5.2-linux-amd64.so
 
 macosx:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX" SYSLIBS="-lreadline" CC=cc
