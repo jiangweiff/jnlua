@@ -130,6 +130,7 @@ public final class NativeLibraryLoader {
     public static void load(String originalName, ClassLoader loader) {
         // Adjust expected name to support shading of native libraries.
         String name = originalName;
+        System.out.print("loading lua native lib "+name);
         List<Throwable> suppressed = new ArrayList<Throwable>();
         try {
             // first try to load from java.library.path
@@ -162,6 +163,7 @@ public final class NativeLibraryLoader {
             String suffix = libname.substring(index);
 
             tmpFile = File.createTempFile(prefix, suffix, WORKDIR);
+            System.out.print("loading lua native lib from "+tmpFile.getPath());
             in = url.openStream();
             out = new FileOutputStream(tmpFile);
 

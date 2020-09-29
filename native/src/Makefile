@@ -112,7 +112,7 @@ generic: $(ALL)
 
 linux:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline"
-	$(MAKE) "JNLUA_T=jnlua-5.2-linux-amd64.so" jnlua-5.2-linux-amd64.so
+	$(MAKE) "JNLUA_T=libjnlua-5.2-linux-amd64.so" libjnlua-5.2-linux-amd64.so
 
 macosx:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX" SYSLIBS="-lreadline" CC=cc
