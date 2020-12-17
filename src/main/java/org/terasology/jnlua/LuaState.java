@@ -2675,6 +2675,8 @@ public abstract class LuaState {
 		
 		CJSON(11),
 
+		PB(12),
+
 		/**
 		 * The Eris persistence library, available if the "JNLUA_USE_ERIS"
 		 * define was set during compilation with an Eris-patched Lua VM.

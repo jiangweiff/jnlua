@@ -69,8 +69,8 @@ $(LUA_T): $(LUA_O) $(LUA_A)
 $(LUAC_T): $(LUAC_O) $(LUA_A)
 	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
 
-$(JNLUA_T): jnlua.o $(LUA_A)  lua_cjson.o strbuf.o fpconv.o
-	$(CC) -o $@ $(LDFLAGS) jnlua.o  lua_cjson.o strbuf.o fpconv.o $(LUAC_O) $(LUA_A) $(LIBS)
+$(JNLUA_T): jnlua.o $(LUA_A)  lua_cjson.o pb.o strbuf.o fpconv.o
+	$(CC) -o $@ $(LDFLAGS) jnlua.o  lua_cjson.o pb.o strbuf.o fpconv.o $(LUAC_O) $(LUA_A) $(LIBS)
 
 
 clean:
@@ -195,6 +195,7 @@ lvm.o: lvm.c lua.h luaconf.h ldebug.h lstate.h lobject.h llimits.h ltm.h \
 lzio.o: lzio.c lua.h luaconf.h llimits.h lmem.h lstate.h lobject.h ltm.h \
  lzio.h
 lua_cjson.o: lua_cjson.c lua.h
+pb.o: pb.c lua.h lualib.h lauxlib.h
 strbuf.o: strbuf.c
 fpconv.o: fpconv.c
 jnlua.o: jnlua.c lua.h lauxlib.h lualib.h

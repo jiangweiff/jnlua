@@ -418,6 +418,8 @@ JNIEXPORT jint JNICALL JNI_LUASTATE_METHOD(lua_1gc) (JNIEnv *env, jobject obj, j
 
 /* ---- Registration ---- */
 int luaopen_cjson(lua_State *l);
+int luaopen_pb (lua_State *l);
+
 /* lua_openlib() */
 static int openlib_protected (lua_State *L) {
 	const char *libname;
@@ -473,6 +475,10 @@ static int openlib_protected (lua_State *L) {
 	case 11:
 		libname = "cjson";
 		openfunc = luaopen_cjson;
+		break;
+	case 12:
+		libname = "pb";
+		openfunc = luaopen_pb;
 		break;
 #ifdef JNLUA_USE_ERIS
 	case 256:
