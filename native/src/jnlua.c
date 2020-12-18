@@ -504,7 +504,7 @@ static int openlib_isvalid(jint lib) {
 	if (lib == 256) return 1;
 #endif
 
-	return (lib >= 0 && lib <= 11);
+	return (lib >= 0 && lib <= 12);
 }
 
 JNIEXPORT void JNICALL JNI_LUASTATE_METHOD(lua_1openlib) (JNIEnv *env, jobject obj, jint lib) {
