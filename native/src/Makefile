@@ -11,7 +11,7 @@ JNLUA_SUFFIX=52
 PLAT= none
 
 CC= gcc
-CFLAGS= -O2 -Wall -fPIC -DLUA_COMPAT_ALL -DLUA_USE_POSIX -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" -I"$(JDK_DIR_LINUX)/include" -I"$(JDK_DIR_LINUX)/include/linux" -DJNLUA_SUFFIX=$(JNLUA_SUFFIX) $(SYSCFLAGS) $(MYCFLAGS)
+CFLAGS= -O2 -Wall -fPIC -DLUA_COMPAT_ALL -I"$(JDK_DIR)/include" -I"$(JDK_DIR)/include/win32" -I"$(JDK_DIR_LINUX)/include" -I"$(JDK_DIR_LINUX)/include/linux" -DJNLUA_SUFFIX=$(JNLUA_SUFFIX) $(SYSCFLAGS) $(MYCFLAGS)
 LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS) -W -shared
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
@@ -195,7 +195,7 @@ lvm.o: lvm.c lua.h luaconf.h ldebug.h lstate.h lobject.h llimits.h ltm.h \
 lzio.o: lzio.c lua.h luaconf.h llimits.h lmem.h lstate.h lobject.h ltm.h \
  lzio.h
 lua_cjson.o: lua_cjson.c lua.h
-pb.o: pb.c lua.h lualib.h lauxlib.h
+pb.o: pb.c pb.h lua.h lualib.h lauxlib.h
 strbuf.o: strbuf.c
 fpconv.o: fpconv.c
 jnlua.o: jnlua.c lua.h lauxlib.h lualib.h
